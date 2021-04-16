@@ -10,9 +10,9 @@ def nothing(x):
 # define the default trackbar to find the right color range
 cv2.namedWindow("Trackbars")
 
-cv2.createTrackbar("L - H", "Trackbars", 0, 179, nothing)
-cv2.createTrackbar("L - S", "Trackbars", 0, 255, nothing)
-cv2.createTrackbar("L - V", "Trackbars", 0, 255, nothing)
+cv2.createTrackbar("L - H", "Trackbars", 91, 179, nothing)
+cv2.createTrackbar("L - S", "Trackbars", 164, 255, nothing)
+cv2.createTrackbar("L - V", "Trackbars", 135, 255, nothing)
 cv2.createTrackbar("U - H", "Trackbars", 179, 179, nothing)
 cv2.createTrackbar("U - S", "Trackbars", 255, 255, nothing)
 cv2.createTrackbar("U - V", "Trackbars", 255, 255, nothing)
