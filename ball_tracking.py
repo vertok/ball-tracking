@@ -4,6 +4,7 @@ import argparse
 import imutils
 import cv2
 
+# empty func
 def nothing(x):
     pass
 
@@ -42,6 +43,7 @@ while True:
     (grabbed, frame) = camera.read()
 
     if args.get("video") and not grabbed:
+        print("something went wrong!")
         break
 
     frame = imutils.resize(frame, width=600)
@@ -55,11 +57,14 @@ while True:
     center = None
 
     if len(cnts) > 0:
-        c = max(cnts, key=cv2.contourArea)
-        ((x, y), radius) = cv2.minEnclosingCircle(c)
+        cnt = max(cnts, key=cv2.contourArea)
+        (x,y),radius = cv2.minEnclosingCircle(cnt)
+        center = (int(x),int(y))
+        radius = int(radius)
 
-        if radius > 1:
-            cv2.circle(frame, (int(x), int(y)), int(radius), (0, 255, 255), 2)
+        # draw circle arout subject OI
+        if radius > 5:
+            cv2.circle(frame, center, radius, (0, 255, 255), 2)
 
     # as output here there will be only the subject OIin color
     result = cv2.bitwise_and(frame, frame, mask=mask)
